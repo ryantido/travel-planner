@@ -20,7 +20,7 @@ export default async function NewTripPage() {
     redirect("/?unauthorized=1");
   }
   return (
-    <div className="container h-screen mx-auto flex justify-center items-center px-4 py-6">
+    <div className="container h-[calc(100dvh-4rem)] mx-auto flex justify-center items-center px-4 py-6">
       <Card className="w-full max-w-lg">
         <CardHeader>
           <CardTitle>New Trip</CardTitle>

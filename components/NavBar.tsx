@@ -30,7 +30,7 @@ export default function NavBar({ session }: { session: Session | null }) {
           />
           <span className="text-2xl font-bold font-mono">Velora</span>
         </Link>
-        <div className="flex space-x-4 items-center">
+        <div className="flex space-x-8 items-center">
           <ul className="flex space-x-4 items-center">
             {NavItems.map(({ label, href }) => (
               <li key={label}>
