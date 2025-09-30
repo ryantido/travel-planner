@@ -9,6 +9,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { login, logout } from "@/lib/auth-actions";
 import { Session } from "next-auth";
+import Toast from "./Toast";
 
 export default function NavBar({ session }: { session: Session | null }) {
   const pathname = usePathname();
@@ -65,6 +66,7 @@ export default function NavBar({ session }: { session: Session | null }) {
               Sign out
             </Button>
           )}
+          
         </div>
       </nav>
     </header>

@@ -1,6 +1,44 @@
-import Image from "next/image";
+"use client"
 
+import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { toast } from "sonner";
 export default function Home() {
+
+  const params = useSearchParams();
+  const Unauthorized = params.get("unauthorized");
+  useEffect(() => {
+    if (Unauthorized) {
+      toast.custom((t) => 
+        <div
+          className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-md p-4 shadow-lg flex items-start justify-between w-full max-w-sm"
+          data-id={t}
+          role="alert"
+        >
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between text-md text-red-500 font-semibold">
+              Unauthorized
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => toast.dismiss(t)}
+                aria-label="Close"
+                className="translate-x-2"
+              >
+                <X className="w-4 h-4 text-black dark:text-white" />
+              </Button>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              You must be signed in to view this page.
+            </p>
+          </div>
+        </div>)
+    }
+  },[Unauthorized])
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -97,7 +135,7 @@ export default function Home() {
           />
           Go to nextjs.org →
         </a>
-      </footer>
+      </footer>      
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { auth } from "@/auth";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,7 @@ export default async function RootLayout({
       >
         <NavBar session={session}/>      
         {children}
-        <div className="w-full h-screen"></div>
+        <Toaster position="bottom-right" closeButton richColors/>
       </body>
     </html>
   );
