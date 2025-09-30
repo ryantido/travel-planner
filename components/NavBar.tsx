@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Button } from "./ui/button";
-import { Github } from "lucide-react";
+import { login } from "@/lib/auth-actions";
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -27,9 +27,7 @@ export default function NavBar() {
             objectFit="contain"
             priority
           />
-          <span className="text-2xl font-bold font-mono">
-            Travel Planner
-          </span>
+          <span className="text-2xl font-bold font-mono">Travel Planner</span>
         </Link>
         <div className="flex space-x-4 items-center">
           <ul className="flex space-x-4 items-center">
@@ -48,7 +46,7 @@ export default function NavBar() {
               </li>
             ))}
           </ul>
-          <Button className="font-semibold">
+          <Button className="font-semibold" onClick={login}>
             Sign In
             <Image
               src="/github-mark.svg"
