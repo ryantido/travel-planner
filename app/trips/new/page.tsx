@@ -1,27 +1,34 @@
-import { Button } from "@/components/ui/button";
+import { auth } from "@/auth";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import React from "react";
+import createTrip from "@/lib/actions/create-trip";
+import { redirect } from "next/navigation";
+import { SubmitButton } from "@/components/SubmitButton";
+import { PrefetchTrips } from "@/components/PrefetchTrips";
 
-export default function NewTripPage() {
+export default async function NewTripPage() {
+  const session = await auth();
+  if (!session) {
+    redirect("/?unauthorized=1");
+  }
   return (
-    <div className="container h-screen mx-auto flex justify-center items-center px-4">
+    <div className="container h-screen mx-auto flex justify-center items-center px-4 py-6">
       <Card className="w-full max-w-lg">
         <CardHeader>
           <CardTitle>New Trip</CardTitle>
           <CardDescription>Plan your next trip with ease</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <PrefetchTrips />
+          <form action={createTrip}>
             <div className="flex flex-col gap-4">
               <div className="grig space-y-3">
                 <Label htmlFor="title">Title</Label>
@@ -42,8 +49,8 @@ export default function NewTripPage() {
                 />
               </div>
               <div className="grig space-y-3">
-                <Label htmlFor="image">Upload Image</Label>
-                <Input id="image" name="imageUrl" type="file" />
+                <Label htmlFor="imageUrl">Image URL</Label>
+                <Input id="imageUrl" name="imageUrl" type="url" placeholder="https://example.com/image.jpg" />
               </div>
               <div className="grid space-y-3 grid-cols-1 md:grid-cols-2 md:space-x-3 md:space-y-0">
                 <div className="grig space-y-3">
@@ -68,7 +75,7 @@ export default function NewTripPage() {
                   />
                 </div>
               </div>
-              <Button type="submit">Create Trip</Button>
+              <SubmitButton idleText="Create Trip" pendingText="Creating" />
             </div>
           </form>
         </CardContent>
@@ -76,3 +83,4 @@ export default function NewTripPage() {
     </div>
   );
 }
+
