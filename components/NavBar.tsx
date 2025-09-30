@@ -27,7 +27,7 @@ export default function NavBar() {
             objectFit="contain"
             priority
           />
-          <span className="text-2xl font-bold font-mono">Travel Planner</span>
+          <span className="text-2xl font-bold font-mono">Velora</span>
         </Link>
         <div className="flex space-x-4 items-center">
           <ul className="flex space-x-4 items-center">

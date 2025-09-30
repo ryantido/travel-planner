@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Travel Planner",
-  description: "Plan your next trip",
+  title: "Velora",
+  description: "Plan, document, and share your journeys effortlessly with Velora – a beautifully designed travel app.",
 };
 
 export default function RootLayout({
