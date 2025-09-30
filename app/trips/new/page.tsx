@@ -39,20 +39,36 @@ export default function NewTripPage() {
                   id="description"
                   name="description"
                   placeholder="Type your description here!"
-                  required
                 />
+              </div>
+              <div className="grig space-y-3">
+                <Label htmlFor="image">Upload Image</Label>
+                <Input id="image" name="imageUrl" type="file" />
               </div>
               <div className="grid space-y-3 grid-cols-1 md:grid-cols-2 md:space-x-3 md:space-y-0">
                 <div className="grig space-y-3">
                   <Label htmlFor="startDate">Start Date</Label>
-                  <Input id="startDate" name="startDate" type="date" required />
+                  <Input
+                    id="startDate"
+                    name="startDate"
+                    type="date"
+                    min={new Date().toISOString().split("T")[0]}
+                    defaultValue={new Date().toISOString().split("T")[0]}
+                    required
+                  />
                 </div>
                 <div className="grig space-y-3">
                   <Label htmlFor="endDate">End Date</Label>
-                  <Input id="endDate" name="endDate" type="date" required />
+                  <Input
+                    id="endDate"
+                    name="endDate"
+                    type="date"
+                    min={new Date().toISOString().split("T")[0]}
+                    required
+                  />
                 </div>
               </div>
-              <Button type="submit">Save Trip</Button>
+              <Button type="submit">Create Trip</Button>
             </div>
           </form>
         </CardContent>
