@@ -7,7 +7,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Button } from "./ui/button";
-import { Github } from "lucide-react";
 
 export default function NavBar() {
   const pathname = usePathname();
