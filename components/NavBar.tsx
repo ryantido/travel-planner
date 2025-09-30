@@ -7,9 +7,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Button } from "./ui/button";
-import { login } from "@/lib/auth-actions";
+import { login, logout } from "@/lib/auth-actions";
+import { Session } from "next-auth";
 
-export default function NavBar() {
+export default function NavBar({ session }: { session: Session | null }) {
   const pathname = usePathname();
   return (
     <header
@@ -46,17 +47,24 @@ export default function NavBar() {
               </li>
             ))}
           </ul>
-          <Button className="font-semibold" onClick={login}>
-            Sign In
-            <Image
-              src="/github-mark.svg"
-              alt="Github Logo"
-              width={18}
-              height={18}
-              priority
-              className="text-foreground invert"
-            />
-          </Button>
+          {!session && (
+            <Button className="font-semibold" onClick={login}>
+              Sign In
+              <Image
+                src="/github-mark.svg"
+                alt="Github Logo"
+                width={18}
+                height={18}
+                priority
+                className="text-foreground invert"
+              />
+            </Button>
+          )}
+          {session && (
+            <Button className="font-semibold outline" onClick={logout}>
+              Sign out
+            </Button>
+          )}
         </div>
       </nav>
     </header>
