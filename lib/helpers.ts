@@ -1,9 +1,11 @@
-export interface TripLike {
-  startDate: Date | string;
-  endDate: Date | string;
-}
+import { Trip } from "./generated/prisma";
 
-export function sortTrips(trips: TripLike[] | null | undefined) {
+// export interface TripLike extends Trip {
+//   // endDate: Date | string;
+//   // startDate: Date | string;
+// }
+
+export function sortTrips(trips: Trip[] | null | undefined) {
   if (!Array.isArray(trips) || trips.length === 0) {
     return { upCommingTrips: [], pastTrips: [], activeTrips: [] };
   }
@@ -19,7 +21,7 @@ export function sortTrips(trips: TripLike[] | null | undefined) {
   const upCommingTrips = sorted.filter(
     (t) => getTime(t.startDate) >= now.getTime()
   );
-  const pastTrips = sorted.filter((t) => getTime(t.startDate) < now.getTime());
+  const pastTrips = sorted.filter((t) => getTime(t.endDate) < now.getTime());
   const activeTrips = sorted.filter(
     (t) =>
       getTime(t.startDate) <= now.getTime() &&
