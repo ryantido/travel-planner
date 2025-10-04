@@ -77,7 +77,25 @@ model Trip {
   endDate       DateTime
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
+
+  locations     Location[]
   
   userId        String
   user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Location {
+  id            String     @id @default(cuid())
+  name          String
+  description   String?
+  latitude      Float
+  longitude     Float
+
+  order         Int        @default(0)
+
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  tripId        String
+  trip          Trip       @relation(fields: [tripId], references: [id], onDelete: Cascade)
 }

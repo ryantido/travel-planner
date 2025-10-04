@@ -25,7 +25,6 @@ export default function NavBar({ session }: { session: Session | null }) {
             className="aspect-square rounded-xs"
             width={32}
             height={32}
-            objectFit="contain"
             priority
           />
           <span className="text-2xl font-bold font-mono">Velora</span>
@@ -47,6 +46,9 @@ export default function NavBar({ session }: { session: Session | null }) {
               </li>
             ))}
           </ul>
+          <span className="inline-block font-sans font-semibold text-lg !ml-6 capitalize select-none">
+            Hello, {session?.user?.name}
+          </span>
           {!session && (
             <Button className="font-semibold" onClick={login}>
               Sign In
@@ -65,7 +67,6 @@ export default function NavBar({ session }: { session: Session | null }) {
               Sign out
             </Button>
           )}
-          
         </div>
       </nav>
     </header>

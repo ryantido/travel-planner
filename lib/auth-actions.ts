@@ -7,5 +7,5 @@ export const login = async () => {
 }
 
 export const logout = async () => {
-    await signOut({ callbackUrl: "/" })
+    await signOut({ redirect: true, redirectTo: "/" })
 }
