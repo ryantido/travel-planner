@@ -27,7 +27,7 @@ export default function NavBar({ session }: { session: Session | null }) {
             height={32}
             priority
           />
-          <span className="text-2xl font-bold font-mono">Velora</span>
+          <span className="text-2xl font-bold">Velora</span>
         </Link>
         <div className="flex space-x-4 items-center">
           <ul className="flex space-x-4 items-center">
