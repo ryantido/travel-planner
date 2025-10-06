@@ -82,6 +82,8 @@ model Trip {
   
   userId        String
   user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([id, userId])
 }
 
 model Location {

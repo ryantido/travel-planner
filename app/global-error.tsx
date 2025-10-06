@@ -11,8 +11,8 @@ export default function GlobalError({
 }) {
   return (
     <html>
-      <body className="h-screen grid place-items-center p-4 space-y-4 text-center">
-        <h2 className="text-2xl font-bold">Something went wrong!</h2>
+      <body className="h-screen flex flex-col items-center justify-center p-4 space-y-3 text-center">
+        <h2 className="text-4xl font-bold">Something went wrong!</h2>
         <p>{error.message}</p>
         <Button onClick={() => reset()}>Try again</Button>
       </body>

@@ -1,7 +1,14 @@
 "use client";
 
 import { Location, Trip } from "@/lib/generated/prisma";
-import { Calendar, MapIcon, NotebookText, Plane, Plus } from "lucide-react";
+import {
+  Calendar,
+  MapIcon,
+  NotebookText,
+  Plane,
+  Plus,
+  Trash2,
+} from "lucide-react";
 import Image from "next/image";
 import {
   Card,
@@ -16,6 +23,7 @@ import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import Maps from "./Maps";
 import SortableItinerary from "./SortableItinerary";
+import { useRouter } from "next/navigation";
 
 type TripWithLocationProps = Trip & {
   locations: Location[];
@@ -26,6 +34,29 @@ interface TripDetails {
 }
 
 export default function TripDetails({ trip }: TripDetails) {
+  const router = useRouter();
+  const handleTripDeletion = async (id: string): Promise<void> => {
+    try {
+      const response = await fetch(`/api/trips/delete/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        console.error("An error occurred while trying to delete the trip");
+        throw new Error("Deletion failed");
+      }
+
+      console.log("Trip deleted successfully!");
+      router.push("/trips");
+    } catch (error) {
+      console.error(error);
+      throw new Error(
+        error instanceof Error
+          ? error.message
+          : `An error occurred when fetching API: ${error}`
+      );
+    }
+  };
   return (
     <div className="container min-h-[calc(100dvh-4rem)] mx-auto px-4 py-6 space-y-6">
       <section className="h-72 max-h-72 md:h-96 md:max-h-96 w-full overflow-hidden relative rounded-md">
@@ -42,6 +73,7 @@ export default function TripDetails({ trip }: TripDetails) {
             priority
             placeholder="blur"
             blurDataURL="/placeholder.jpg"
+            className="object-cover"
           />
         ) : (
           <div className="w-full h-72 max-h-72 md:h-96 md:max-h-96 bg-gray-200 flex flex-col items-center justify-center space-y-3 rounded-md">
@@ -54,7 +86,7 @@ export default function TripDetails({ trip }: TripDetails) {
         <Card>
           <CardHeader>
             <CardTitle className="text-xl lg:text-2xl font-extrabold">
-              <h1>{trip?.title}</h1>
+              <h1 className="line-clamp-3 max-w-5xl">{trip?.title}</h1>
               <p className="font-medium text-base inline-flex w-full items-center space-x-2">
                 <Calendar size={18} />
                 <span className="self-baseline">
@@ -70,7 +102,17 @@ export default function TripDetails({ trip }: TripDetails) {
                   Add Location
                 </Button>
               </Link>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="translate-x-2 hover:bg-red-200 hover:text-red-600"
+                title="delete trip"
+                onClick={() => handleTripDeletion(trip.id)}
+              >
+                <Trash2 size={18} />
+              </Button>
             </CardAction>
+            <CardAction></CardAction>
           </CardHeader>
         </Card>
         <Card>
@@ -86,7 +128,7 @@ export default function TripDetails({ trip }: TripDetails) {
                   Trip Summary
                 </CardTitle>
                 <CardDescription className="flex items-start space-x-2 mt-3">
-                  <Calendar size={18} className="inline-block" />
+                  <Calendar size={18} className="inline-block shrink-0" />
                   <div>
                     <p>Dates</p>
                     <p>
@@ -104,14 +146,14 @@ export default function TripDetails({ trip }: TripDetails) {
                   </div>
                 </CardDescription>
                 <CardDescription className="flex items-start space-x-2 mt-3 pt-1">
-                  <NotebookText size={18} className="inline-block" />
+                  <NotebookText size={18} className="inline-block shrink-0" />
                   <div>
                     <p>Description</p>
                     <p>{trip.description}</p>
                   </div>
                 </CardDescription>
                 <CardDescription className="flex items-start space-x-2 mt-3">
-                  <MapIcon size={18} className="inline-block" />
+                  <MapIcon size={18} className="inline-block shrink-0" />
                   <div className="flex flex-col space-y-2 w-full">
                     <p>Destinations</p>
                     <p>
@@ -136,11 +178,13 @@ export default function TripDetails({ trip }: TripDetails) {
                       Here you can view and edit your itinerary
                     </CardDescription>
                   </CardTitle>
-                  <CardAction>
-                    <Link href={`/trips/${trip?.id}/itinarary/new`}>
-                      <Button>Add new location</Button>
-                    </Link>
-                  </CardAction>
+                  {trip.locations.length === 0 && (
+                    <CardAction>
+                      <Link href={`/trips/${trip?.id}/itinarary/new`}>
+                        <Button>Add new location</Button>
+                      </Link>
+                    </CardAction>
+                  )}
                 </CardHeader>
                 <CardContent>
                   <SortableItinerary
