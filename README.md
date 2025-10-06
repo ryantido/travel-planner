@@ -1,6 +1,106 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+# Velora – Travel beautifully
+
+Velora helps you plan, document, and share your journeys with clean itineraries, interactive maps, and a delightful UI.
+
+## Features
+- Trips and itineraries: Create trips and manage locations with drag-and-drop.
+- Interactive maps: Visualize destinations in context.
+- GitHub sign-in: Simple and secure authentication.
+- Modern stack: Next.js App Router, Prisma, TypeScript, Tailwind.
+
+## Tech Stack
+- Framework: Next.js (App Router)
+- DB/ORM: PostgreSQL + Prisma
+- Auth: NextAuth with GitHub provider
+- Styling: Tailwind CSS
+- Maps/Geocoding: LocationIQ
+
+## Prerequisites
+- Node.js 18+
+- PostgreSQL database
+- GitHub OAuth app credentials (for NextAuth)
+- LocationIQ API key
+
 ## Getting Started
+
+### 1) Install dependencies
+```
+pnpm install
+# or: npm install / yarn / bun
+```
+
+### 2) Configure environment
+- Copy `.env.example` to `.env.local` and fill secrets:
+```
+cp .env.example .env.local
+```
+
+Required keys:
+- `DATABASE_URL`
+- `NEXTAUTH_SECRET`
+- `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`
+- `NEXT_PUBLIC_LOCATION_IQ_API_KEY`
+- `NEXT_PUBLIC_SITE_URL`
+
+### 3) Database
+```
+pnpm prisma migrate dev
+```
+
+### 4) Run the dev server
+```
+pnpm dev
+```
+Open http://localhost:3000
+
+## Project Scripts
+- `pnpm dev`: Start development server
+- `pnpm build`: Production build
+- `pnpm start`: Start production server
+- `pnpm prisma migrate dev`: Run migrations
+- `pnpm prisma studio`: Open Prisma Studio
+
+## Architecture Notes
+- App Router in `app/`
+- API routes under `app/api`
+- Prisma schema in `prisma/schema.prisma`
+- UI components in `components/`
+
+## Authentication
+- NextAuth with GitHub provider: set `AUTH_GITHUB_ID` and `AUTH_GITHUB_SECRET`.
+- Set `NEXTAUTH_SECRET` in `.env.local`.
+
+## Fonts and Design
+- `next/font/google` with Inter (sans) and Roboto Mono (mono).
+- `globals.css` expects variables `--font-geist-sans` and `--font-geist-mono`, which are provided by `app/layout.tsx`.
+
+## Metadata and SEO
+- `app/layout.tsx` exports metadata (title templates, Open Graph, Twitter card, theme colors).
+- Set `NEXT_PUBLIC_SITE_URL` for absolute URLs.
+- OG/Twitter images default to `/placeholder.jpg`; you can add `public/og-image.png` and adjust `layout`.
+
+Optional:
+- robots and sitemap: add `app/robots.ts` and `app/sitemap.ts` to improve indexing. Ask a maintainer if you want these generated.
+
+## Contributing
+Branching model:
+- Code/features/SEO: use a semantic branch name, e.g. `feat/landing-page`, `chore/seo`, `fix/delete-trip`
+- Documentation: use a `doc/` branch, e.g. `doc/readme-revamp`
+
+Pull Requests:
+- Keep changes scoped and tested
+- Include screenshots for UI changes when relevant
+
+## License
+Add your license details here (MIT recommended).
+
+---
+
+## Legacy notes
+This project was bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+For reference, the original quickstart instructions follow.
 
 First, run the development server:
 
