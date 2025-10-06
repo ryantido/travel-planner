@@ -46,9 +46,11 @@ export default function NavBar({ session }: { session: Session | null }) {
               </li>
             ))}
           </ul>
-          <span className="inline-block font-sans font-semibold text-lg !ml-6 capitalize select-none">
-            Hello, {session?.user?.name}
-          </span>
+          {session && (
+            <span className="inline-block font-sans font-semibold text-lg !ml-6 capitalize select-none">
+              Hello, {session?.user?.name}
+            </span>
+          )}
           {!session && (
             <Button className="font-semibold" onClick={login}>
               Sign In
