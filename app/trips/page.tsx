@@ -88,18 +88,6 @@ export default async function TripsPage() {
                         <CardTitle className="line-clamp-1">
                           {trip.title}
                         </CardTitle>
-                        <CardAction>
-                          <Link href={`/trips/${trip.id}`}>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="-translate-y-2 translate-x-2 hover:bg-red-200 hover:text-red-600"
-                              title="delete"
-                            >
-                              <Trash2 size={18} />
-                            </Button>
-                          </Link>
-                        </CardAction>
                       </CardHeader>
                       <CardContent className="flex flex-col flex-1">
                         {trip.imageUrl ? (
@@ -165,18 +153,6 @@ export default async function TripsPage() {
                 <Card key={trip.id} className="flex flex-col">
                   <CardHeader>
                     <CardTitle className="line-clamp-1">{trip.title}</CardTitle>
-                    <CardAction>
-                      <Link href={`/trips/${trip.id}`}>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="-translate-y-2 translate-x-2 hover:bg-red-200 hover:text-red-600"
-                          title="delete"
-                        >
-                          <Trash2 size={18} />
-                        </Button>
-                      </Link>
-                    </CardAction>
                   </CardHeader>
                   <CardContent className="flex flex-col flex-1">
                     {trip.imageUrl ? (
@@ -240,18 +216,6 @@ export default async function TripsPage() {
                 <Card key={trip.id} className="flex flex-col">
                   <CardHeader>
                     <CardTitle className="line-clamp-1">{trip.title}</CardTitle>
-                    <CardAction>
-                      <Link href={`/trips/${trip.id}`}>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="-translate-y-2 translate-x-2 hover:bg-red-200 hover:text-red-600"
-                          title="delete"
-                        >
-                          <Trash2 size={18} />
-                        </Button>
-                      </Link>
-                    </CardAction>
                   </CardHeader>
                   <CardContent className="flex flex-col flex-1">
                     {trip.imageUrl ? (
@@ -315,18 +279,6 @@ export default async function TripsPage() {
                 <Card key={trip.id} className="flex flex-col">
                   <CardHeader>
                     <CardTitle className="line-clamp-1">{trip.title}</CardTitle>
-                    <CardAction>
-                      <Link href={`/trips/${trip.id}`}>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="-translate-y-2 translate-x-2 hover:bg-red-200 hover:text-red-600"
-                          title="delete"
-                        >
-                          <Trash2 size={18} />
-                        </Button>
-                      </Link>
-                    </CardAction>
                   </CardHeader>
                   <CardContent className="flex flex-col flex-1">
                     {trip.imageUrl ? (
@@ -390,18 +342,6 @@ export default async function TripsPage() {
                 <Card key={trip.id} className="flex flex-col">
                   <CardHeader>
                     <CardTitle className="line-clamp-1">{trip.title}</CardTitle>
-                    <CardAction>
-                      <Link href={`/trips/${trip.id}`}>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="-translate-y-2 translate-x-2 hover:bg-red-200 hover:text-red-600"
-                          title="delete"
-                        >
-                          <Trash2 size={18} />
-                        </Button>
-                      </Link>
-                    </CardAction>
                   </CardHeader>
                   <CardContent className="flex flex-col flex-1">
                     {trip.imageUrl ? (
