@@ -1,7 +1,14 @@
 "use client";
 
 import { Location, Trip } from "@/lib/generated/prisma";
-import { Calendar, MapIcon, NotebookText, Plane, Plus } from "lucide-react";
+import {
+  Calendar,
+  MapIcon,
+  NotebookText,
+  Plane,
+  Plus,
+  Trash2,
+} from "lucide-react";
 import Image from "next/image";
 import {
   Card,
@@ -16,6 +23,7 @@ import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import Maps from "./Maps";
 import SortableItinerary from "./SortableItinerary";
+import { useRouter } from "next/navigation";
 
 type TripWithLocationProps = Trip & {
   locations: Location[];
@@ -26,6 +34,29 @@ interface TripDetails {
 }
 
 export default function TripDetails({ trip }: TripDetails) {
+  const router = useRouter();
+  const handleTripDeletion = async (id: string): Promise<void> => {
+    try {
+      const response = await fetch(`/api/trips/delete/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        console.error("An error occurred while trying to delete the trip");
+        throw new Error("Deletion failed");
+      }
+
+      console.log("Trip deleted successfully!");
+      router.push("/trips");
+    } catch (error) {
+      console.error(error);
+      throw new Error(
+        error instanceof Error
+          ? error.message
+          : `An error occurred when fetching API: ${error}`
+      );
+    }
+  };
   return (
     <div className="container min-h-[calc(100dvh-4rem)] mx-auto px-4 py-6 space-y-6">
       <section className="h-72 max-h-72 md:h-96 md:max-h-96 w-full overflow-hidden relative rounded-md">
@@ -42,6 +73,7 @@ export default function TripDetails({ trip }: TripDetails) {
             priority
             placeholder="blur"
             blurDataURL="/placeholder.jpg"
+            className="object-cover"
           />
         ) : (
           <div className="w-full h-72 max-h-72 md:h-96 md:max-h-96 bg-gray-200 flex flex-col items-center justify-center space-y-3 rounded-md">
@@ -70,7 +102,17 @@ export default function TripDetails({ trip }: TripDetails) {
                   Add Location
                 </Button>
               </Link>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="translate-x-2 hover:bg-red-200 hover:text-red-600"
+                title="delete trip"
+                onClick={() => handleTripDeletion(trip.id)}
+              >
+                <Trash2 size={18} />
+              </Button>
             </CardAction>
+            <CardAction></CardAction>
           </CardHeader>
         </Card>
         <Card>
