@@ -32,7 +32,7 @@ export default async function TripsPage() {
   return (
     <div className="container mx-auto space-y-4 px-3 py-8">
       <Tabs defaultValue="recent">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col space-y-3 sm:flex-row sm:items-center sm:space-y-0 justify-between mb-4">
           <h1 className="text-2xl font-bold">My Trips — Velora</h1>
           <TabsList>
             <TabsTrigger value="recent">Recent & All</TabsTrigger>
@@ -45,12 +45,12 @@ export default async function TripsPage() {
 
       <Card className="mb-6">
         <CardHeader>
-          <CardTitle className="text-2xl border-b flex items-center justify-between">
+          <CardTitle className="text-2xl border-b flex flex-col space-y-3 sm:flex-row sm:items-center sm:space-y-0 sm:justify-between">
             <p>
               Welcome back,{" "}
               <span className="capitalize">{session?.user?.name}</span>
             </p>
-            <p className="text-base font-medium max-lg:text-right whitespace-pre-wrap">
+            <p className="text-base font-medium max-lg:text-right max-sm:text-left whitespace-pre-wrap">
               You have {trips.length ? trips.length : "no"} trip
               {trips.length === 1 ? "" : "s"} planned{!trips.length && " yet"}
               {activeTrips.length > 0 && `, ${activeTrips.length} active`}
@@ -214,6 +214,7 @@ export default async function TripsPage() {
           </CardContent>
         </Card>
       )}
+      {/* {!trips.} */}
         </TabsContent>
         <TabsContent value="active">
 

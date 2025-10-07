@@ -52,7 +52,7 @@ export default function TripDetails({ trip }: TripDetails) {
       </section>
       <section className="space-y-6">
         <Card>
-          <CardHeader>
+          <CardHeader className="flex flex-col gap-y-2 md:flex-row md:justify-between">
             <CardTitle className="text-xl lg:text-2xl font-extrabold">
               <h1>{trip?.title}</h1>
               <p className="font-medium text-base inline-flex w-full items-center space-x-2">
