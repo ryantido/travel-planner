@@ -18,7 +18,7 @@ export default function GlobePage() {
   const [visitedLocations, setVisitedLocations] = useState<Set<string>>(
     new Set()
   );
-  const [points, setPoints] = useState<any[]>([]);
+  const [points, setPoints] = useState<transformedLocation[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export default function GlobePage() {
                 <h2 className="text-2xl font-semibold mb-4">
                   See where you have been...
                 </h2>
-                <div className="h-[calc(100vh-10rem)] w-full relative">
+                <div className="flex justify-center items-center h-[60vh] md:h-[calc(100vh-10rem)] w-full relative">
                   {isLoading ? (
                     <div className="flex flex-col space-y-3 items-center justify-center h-full">
                       <Loader2 className="animate-spin" size={24} />
@@ -86,8 +86,8 @@ export default function GlobePage() {
                   ) : (
                     <Globe
                       ref={globeRef}
-                      height={600}
-                      width={800}
+                      height={undefined}
+                      width={undefined}
                       pointsData={points}
                       pointLat="latitude"
                       pointLng="longitude"
@@ -97,8 +97,8 @@ export default function GlobePage() {
                       pointLabel="name"
                       pointColor={() => "#FF5733"}
                       backgroundColor="rgba(0,0,0,0)"
-                      bumpImageUrl="//unpkg.com/three@0.140.0/examples/textures/land_ocean_ice_cloud_2048.jpg"
-                      globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+                      bumpImageUrl="https://unpkg.com/three@0.140.0/examples/textures/land_ocean_ice_cloud_2048.jpg"
+                      globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
                     />
                   )}
                 </div>
