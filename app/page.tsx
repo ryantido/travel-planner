@@ -1,4 +1,4 @@
-        "use client";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,13 +11,21 @@ export default function Home() {
             Travel beautifully with <span className="text-primary">Velora</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-prose">
-            Plan, document, and share your journeys. Build stunning itineraries, visualize destinations on an interactive map, and keep memories organized.
+            Plan, document, and share your journeys. Build stunning itineraries,
+            visualize destinations on an interactive map, and keep memories
+            organized.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <Link href="/trips" className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-5 py-3 text-base font-medium hover:opacity-90 transition">
+            <Link
+              href="/trips"
+              className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-5 py-3 text-base font-medium hover:opacity-90 transition"
+            >
               Get started
             </Link>
-            <a href="#features" className="inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground transition">
+            <a
+              href="#features"
+              className="inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-medium hover:bg-accent hover:text-accent-foreground transition"
+            >
               Explore features
             </a>
           </div>
@@ -38,7 +46,7 @@ export default function Home() {
 
       <ClientUnauthorizedToast />
 
-      <section id="features" className="container mx-auto px-4 py-16 md:py-24">
+      <section id="features" className="container mx-auto px-4 py-4">
         <div className="grid md:grid-cols-3 gap-6">
           <FeatureCard
             title="Smart itineraries"
@@ -61,10 +69,17 @@ export default function Home() {
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="rounded-2xl border p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 bg-card">
           <div className="space-y-2">
-            <h2 className="text-2xl md:text-3xl font-bold">Ready to plan your next trip?</h2>
-            <p className="text-muted-foreground">Start by creating a new trip and adding your first destination.</p>
+            <h2 className="text-2xl md:text-3xl font-bold">
+              Ready to plan your next trip?
+            </h2>
+            <p className="text-muted-foreground">
+              Start by creating a new trip and adding your first destination.
+            </p>
           </div>
-          <Link href="/trips" className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-5 py-3 text-base font-medium hover:opacity-90 transition w-full md:w-auto">
+          <Link
+            href="/trips"
+            className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-5 py-3 text-base font-medium hover:opacity-90 transition w-full md:w-auto"
+          >
             Create a trip
           </Link>
         </div>
@@ -73,7 +88,15 @@ export default function Home() {
   );
 }
 
-function FeatureCard({ title, description, icon }: { title: string; description: string; icon: string }) {
+function FeatureCard({
+  title,
+  description,
+  icon,
+}: {
+  title: string;
+  description: string;
+  icon: string;
+}) {
   return (
     <div className="rounded-xl border p-6 bg-card">
       <div className="flex items-center gap-3 mb-3">
