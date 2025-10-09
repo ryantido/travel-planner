@@ -7,7 +7,7 @@ export default function Home() {
     <div className="min-h-[calc(100dvh-4rem)] bg-gradient-to-b from-white to-zinc-50 dark:from-zinc-900 dark:to-zinc-950">
       <section className="container mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-2 gap-10 items-center">
         <div className="space-y-6">
-          <h1 className="font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+          <h1 className="font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[2rem]">
             Travel beautifully with <span className="text-primary">Velora</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-prose">

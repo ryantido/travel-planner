@@ -7,6 +7,6 @@ export function PrefetchTrips({ route = "/trips" }: {route?: string}) {
   const router = useRouter();
   useEffect(() => {
     router.prefetch(route);
-  }, [router]);
+  }, [router, route]);
   return null;
 }

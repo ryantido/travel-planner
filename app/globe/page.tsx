@@ -121,7 +121,7 @@ export default function GlobePage() {
                     <div className="space-y-8">
                       <div className="bg-blue-300 p-4 rounded-lg">
                         <p className="text-sm text-blue-600 font-medium">
-                          You've visited {visitedLocations.size} Countries
+                          You&apos;ve visited {visitedLocations.size} Countries
                         </p>
                       </div>
                         <div className="space-y-2 overflow-y-auto pr-2 max-h-[500px]">

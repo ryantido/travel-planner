@@ -9,7 +9,6 @@ import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { login, logout } from "@/lib/auth-actions";
 import { Session } from "next-auth";
-import { Menu, X } from "lucide-react";
 import { AnimatedMenuToggle } from "./animate/AnimatedMenuToggle";
 
 export default function NavBar({ session }: { session: Session | null }) {
@@ -27,16 +26,19 @@ export default function NavBar({ session }: { session: Session | null }) {
         className="container flex items-center justify-between"
         role="navigation"
       >
-        <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src="/travel-logo.avif"
-            alt="Travel Logo"
-            className="aspect-square rounded-xs"
-            width={32}
-            height={32}
-            priority
-          />
-          <span className="text-2xl font-bold">Velora</span>
+        <Link href="/" aria-label="Go to home page">
+          <div className="flex items-center space-x-2">
+            <div className="ring-1 ring-slate-950/20 shadow-sm rounded relative overflow-hidden flex-shrink-0 h-8.5 w-8.5">
+              <Image
+                src="/travel-logo.avif"
+                alt="Travel Logo"
+                className="object-cover"
+                fill
+                priority
+              />
+            </div>
+            <span className="text-2xl font-bold">Velora</span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -106,7 +108,9 @@ export default function NavBar({ session }: { session: Session | null }) {
       <div
         className={cn(
           "md:hidden fixed top-14 left-0 w-full bg-white/90 backdrop-blur-lg z-40 shadow-lg transition-all duration-300",
-          isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 overflow-hidden opacity-0"
+          isMobileMenuOpen
+            ? "max-h-screen opacity-100"
+            : "max-h-0 overflow-hidden opacity-0"
         )}
       >
         <ul className="flex flex-col space-y-4 p-6">
@@ -146,7 +150,11 @@ export default function NavBar({ session }: { session: Session | null }) {
           )}
 
           {session && (
-            <Button variant="outline" className="font-semibold" onClick={logout}>
+            <Button
+              variant="outline"
+              className="font-semibold"
+              onClick={logout}
+            >
               Sign out
             </Button>
           )}

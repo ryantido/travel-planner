@@ -93,11 +93,6 @@ Pull Requests:
 - Keep changes scoped and tested
 - Include screenshots for UI changes when relevant
 
-## License
-Add your license details here (MIT recommended).
-
----
-
 ## Legacy notes
 This project was bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 For reference, the original quickstart instructions follow.

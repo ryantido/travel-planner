@@ -5,7 +5,11 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { Location } from '@/lib/generated/prisma';
 
-delete (L.Icon.Default.prototype as unknown as any)._getIconUrl;
+type IconDefaultWithInternal = typeof L.Icon.Default.prototype & {
+  _getIconUrl?: unknown;
+};
+
+delete (L.Icon.Default.prototype as IconDefaultWithInternal)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png',
   iconUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png',

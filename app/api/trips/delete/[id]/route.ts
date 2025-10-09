@@ -4,10 +4,10 @@ import { prisma } from "@/lib/prisma";
 
 export async function DELETE(
   req: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
-  const { id } = context.params;
+  const { id } = await context.params;
 
   if (!session) {
     return NextResponse.redirect(new URL("/?unauthorized", req.url));
@@ -17,9 +17,9 @@ export async function DELETE(
     await prisma.trip.delete({
       where: {
         id_userId: {
-            id: id,
-            userId: session.user?.id!
-        }
+          id: id,
+          userId: session.user?.id ?? '',
+        },
       },
     });
 

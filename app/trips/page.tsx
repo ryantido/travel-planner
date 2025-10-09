@@ -2,7 +2,6 @@ import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
@@ -11,7 +10,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { sortTrips } from "@/lib/helpers";
 import { prisma } from "@/lib/prisma";
-import { ExternalLink, Plane, Trash2 } from "lucide-react";
+import { ExternalLink, Plane } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -95,7 +94,7 @@ export default async function TripsPage() {
                             src={trip.imageUrl as string}
                             alt={trip.title}
                             objectFit="contain"
-                            className="w-full h-52 max-h-52 rounded-md"
+                            className="h-52 max-h-52 rounded-md"
                             width={300}
                             height={300}
                             loading="lazy"
@@ -160,7 +159,7 @@ export default async function TripsPage() {
                         src={trip.imageUrl as string}
                         alt={trip.title}
                         objectFit="contain"
-                        className="w-full h-52 max-h-52 rounded-md"
+                        className="h-52 max-h-52 rounded-md"
                         width={300}
                         height={300}
                         loading="lazy"
@@ -224,7 +223,7 @@ export default async function TripsPage() {
                         src={trip.imageUrl as string}
                         alt={trip.title}
                         objectFit="contain"
-                        className="w-full h-52 max-h-52 rounded-md"
+                        className="h-52 max-h-52 rounded-md"
                         width={300}
                         height={300}
                         loading="lazy"
@@ -287,7 +286,7 @@ export default async function TripsPage() {
                         src={trip.imageUrl as string}
                         alt={trip.title}
                         objectFit="contain"
-                        className="w-full h-52 max-h-52 rounded-md"
+                        className="h-52 max-h-52 rounded-md"
                         width={300}
                         height={300}
                         loading="lazy"
@@ -350,7 +349,7 @@ export default async function TripsPage() {
                         src={trip.imageUrl as string}
                         alt={trip.title}
                         objectFit="contain"
-                        className="w-full h-52 max-h-52 rounded-md"
+                        className="h-52 max-h-52 rounded-md"
                         width={300}
                         height={300}
                         loading="lazy"

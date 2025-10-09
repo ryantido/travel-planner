@@ -112,7 +112,6 @@ export default function TripDetails({ trip }: TripDetails) {
                 <Trash2 size={18} />
               </Button>
             </CardAction>
-            <CardAction></CardAction>
           </CardHeader>
         </Card>
         <Card>
@@ -137,8 +136,8 @@ export default function TripDetails({ trip }: TripDetails) {
                     </p>
                     <p>
                       {Math.round(
-                        (trip?.endDate.getTime()! -
-                          trip?.startDate.getTime()!) /
+                        (trip?.endDate.getTime() -
+                          trip?.startDate.getTime()) /
                           (60 * 60 * 24 * 1000)
                       )}{" "}
                       days

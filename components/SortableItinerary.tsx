@@ -33,8 +33,8 @@ function SortableItem({ item }: { item: Location }) {
       className="p-4 border rounded-md flex justify-between items-center hover:shadow-md transition-shadow 
       cursor-grab active:cursor-grabbing"
     >
-      <div>
-        <h2 className="font-semibold text-lg">{item.name}</h2>
+      <div className="w-full">
+        <h2 className="font-semibold text-lg truncate">{item.name}</h2>
         <p className="text-sm text-muted-foreground mt-1 truncate max-w-md">
           {" "}
           <span>Latitute: {item.latitude}</span>,{" "}
@@ -44,7 +44,7 @@ function SortableItem({ item }: { item: Location }) {
           {item.description || "No description provided"}
         </p>
       </div>
-      <div className="text-sm text-muted-foreground self-start shrink-0">
+      <div className="text-sm text-muted-foreground self-start shrink-0 hidden xl:block">
         Day {item.order}
       </div>
     </div>
